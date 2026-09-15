@@ -141,7 +141,7 @@
     .rain-dropdown-content {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.4s ease-out, padding 0.3s ease-out;
+      transition: max-height 0.4s ease-out, padding 0.3s ease-out, margin-top 0.3s ease-out;
       background: rgba(0, 242, 254, 0.03);
       border-radius: 0 0 12px 12px;
       text-align: left;
@@ -151,7 +151,6 @@
     }
 
     .rain-dropdown-content.open {
-      max-height: 400px;
       padding: 20px 25px;
       margin-top: 15px;
       border-top: 1px dashed rgba(0, 242, 254, 0.3);
@@ -537,12 +536,17 @@
       window.addEventListener("scroll", updateScrollFocus, { passive: true });
       updateScrollFocus();
 
-      // Script para el menú desplegable de Garantía por Lluvia
+      // Script mejorado para desplegar la garantía de forma completamente dinámica sin recortes
       const rainToggleBtn = document.getElementById("rainToggleBtn");
       const rainDropdown = document.getElementById("rainDropdown");
 
       rainToggleBtn.addEventListener("click", function () {
         rainDropdown.classList.toggle("open");
+        if (rainDropdown.classList.contains("open")) {
+          rainDropdown.style.maxHeight = rainDropdown.scrollHeight + "px";
+        } else {
+          rainDropdown.style.maxHeight = "0px";
+        }
       });
     });
   </script>
