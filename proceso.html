@@ -126,11 +126,71 @@
       text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
       transition: all 0.3s ease;
       cursor: pointer;
+      background: none;
+      border: none;
+      font-size: inherit;
+      padding: 0;
     }
 
     .rain-link:hover {
       color: #ffffff;
       text-shadow: 0 0 15px var(--neon-cyan);
+    }
+
+    /* VENTANA DESPLEGABLE / ACORDEÓN DE GARANTÍA */
+    .rain-dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out, padding 0.3s ease-out;
+      background: rgba(0, 242, 254, 0.03);
+      border-radius: 0 0 12px 12px;
+      text-align: left;
+      padding: 0 25px;
+      margin-top: 0;
+      border-top: 0px solid rgba(0, 242, 254, 0.3);
+    }
+
+    .rain-dropdown-content.open {
+      max-height: 400px;
+      padding: 20px 25px;
+      margin-top: 15px;
+      border-top: 1px dashed rgba(0, 242, 254, 0.3);
+    }
+
+    .rain-dropdown-content h4 {
+      font-family: 'Orbitron', sans-serif;
+      color: var(--neon-cyan);
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .rain-dropdown-content ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .rain-dropdown-content li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      color: #cfcfcf;
+      font-size: 1.05rem;
+    }
+
+    .rain-dropdown-content li::before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      color: var(--neon-cyan);
+    }
+
+    .rain-dropdown-content .note {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: #a0a0a0;
+      font-style: italic;
     }
 
     /* SERVICIOS / PASOS DEL LAVADO */
@@ -392,9 +452,20 @@
     <div class="rain-banner scroll-focus">
       <p>
         Sabemos que el clima no avisa. Todos nuestros lavados cuentan con 
-        <a href="index.html" class="rain-link">☔ Garantía por lluvia</a>. 
+        <button id="rainToggleBtn" class="rain-link">☔ Garantía por lluvia</button>. 
         Si la lluvia ensucia tu moto tras salir de nuestro taller, te la dejamos limpia de nuevo sin costo.
       </p>
+      
+      <!-- VENTANA DESPLEGABLE / ACORDEÓN -->
+      <div id="rainDropdown" class="rain-dropdown-content">
+        <h4>Garantía por Lluvia *</h4>
+        <ul>
+          <li>Cada lavado cuenta con ☔ Garantía por lluvia.</li>
+          <li>Esta garantía cubre un lavado sin costo alguno si tu moto se ensucia por lodo a causa de lluvia parcial dentro de los límites de la ciudad.</li>
+          <li>Esta garantía es válida después de haber lavado la moto con nosotros en un lapso de 24 horas, después de ese tiempo caduca.</li>
+        </ul>
+        <p class="note">Nota: Transcurrido este periodo, la garantía expira hasta la contratación de un nuevo servicio de lavado.</p>
+      </div>
     </div>
   </section>
 
@@ -465,6 +536,14 @@
 
       window.addEventListener("scroll", updateScrollFocus, { passive: true });
       updateScrollFocus();
+
+      // Script para el menú desplegable de Garantía por Lluvia
+      const rainToggleBtn = document.getElementById("rainToggleBtn");
+      const rainDropdown = document.getElementById("rainDropdown");
+
+      rainToggleBtn.addEventListener("click", function () {
+        rainDropdown.classList.toggle("open");
+      });
     });
   </script>
 
