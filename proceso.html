@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BRILLA MOTO | Lavado Exclusivo de Motos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-cyan: #00f2fe;
+      --neon-pink: #ff007f;
+      --bg-dark: #0d0c0e;
+      --card-bg: #16151a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* CABECERA */
+    header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 20px 5%;
+      background: rgba(13, 12, 14, 0.9);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0, 242, 254, 0.2);
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-main {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #fff;
+      text-shadow: 0 0 10px var(--neon-cyan);
+      letter-spacing: 2px;
+    }
+
+    .logo-sub {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--neon-pink);
+      text-shadow: 0 0 10px var(--neon-pink);
+      letter-spacing: 4px;
+      margin-top: -6px;
+    }
+
+    /* SECCIONES GENÉRICAS */
+    section {
+      padding: 50px 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 40px;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .section-title span {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px var(--neon-cyan);
+    }
+
+    /* CLASE SCROLL FOCUS - ESCALADO CÓMODO Y ACCESIBLE */
+    .scroll-focus {
+      opacity: 1 !important; /* Cero desvanecido para facilitar la lectura */
+      will-change: transform;
+      transform-origin: center center;
+      transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* BANNER GARANTÍA POR LLUVIA */
+    .rain-banner {
+      background: linear-gradient(135deg, rgba(22, 21, 26, 0.95), rgba(13, 12, 14, 0.98));
+      border: 1px solid var(--neon-cyan);
+      border-radius: 16px;
+      padding: 30px 25px;
+      margin: 50px auto 20px auto;
+      max-width: 900px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .rain-banner p {
+      font-size: 1.15rem;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    .rain-link {
+      color: var(--neon-cyan);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .rain-link:hover {
+      color: #ffffff;
+      text-shadow: 0 0 15px var(--neon-cyan);
+    }
+
+    /* SERVICIOS / PASOS DEL LAVADO */
+    .grid-services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card-service {
+      background: var(--card-bg);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 30px 20px;
+      border-radius: 12px;
+      text-align: center;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card-service:hover {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .card-service h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: var(--neon-pink);
+    }
+
+    /* GALERÍA DE TRABAJOS */
+    .grid-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: #222;
+      border: 1px solid rgba(255, 0, 127, 0.3);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* BOTONES ACCIÓN */
+    .action-buttons-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 30px;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .btn-pink {
+      background: transparent;
+      color: var(--neon-pink);
+      border: 2px solid var(--neon-pink);
+      box-shadow: 0 0 12px rgba(255, 0, 127, 0.4);
+    }
+
+    .btn-pink:hover {
+      background: var(--neon-pink);
+      color: #0d0c0e;
+      box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
+    }
+
+    .btn-cyan {
+      background: transparent;
+      color: var(--neon-cyan);
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.4);
+    }
+
+    .btn-cyan:hover {
+      background: var(--neon-cyan);
+      color: #0d0c0e;
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.8);
+    }
+
+    /* SECCIÓN COLLAGE ZIG-ZAG */
+    .collage-section {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      margin-top: 40px;
+    }
+
+    .collage-row {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .collage-row.reverse {
+      flex-direction: row-reverse;
+    }
+
+    .collage-image {
+      flex: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      min-width: 280px;
+      aspect-ratio: 16/10;
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+    }
+
+    .collage-row.reverse .collage-image {
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.2);
+    }
+
+    .collage-image img {
+      width: 100%;
+      height: 100%;
+      object-exit: cover;
+    }
+
+    .collage-content {
+      flex: 1;
+    }
+
+    .collage-content h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      color: var(--neon-cyan);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+
+    .collage-row.reverse .collage-content h3 {
+      color: var(--neon-pink);
+    }
+
+    .collage-content p {
+      font-size: 1.1rem;
+      color: #ccc;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .collage-row, .collage-row.reverse {
+        flex-direction: column !important;
+      }
+      .collage-image {
+        width: 100%;
+      }
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #080709;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      color: #777;
+      margin-top: 80px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-container">
+      <div class="logo-main">BRILLA</div>
+      <div class="logo-sub">MOTO</div>
+    </div>
+  </header>
+
+  <!-- SECCIÓN DE PROCESO DE LAVADO -->
+  <section id="proceso">
+    <h2 class="section-title">Proceso de <span>Lavado</span></h2>
+    <div class="grid-services">
+      <div class="card-service">
+        <div class="card-icon">💦</div>
+        <h3>1. Pre-Lavado con Kärcher</h3>
+        <p>Remoción de tierra y suciedad pesada con presión controlada para proteger la pintura y accesorios.</p>
+      </div>
+      <div class="card-service">
+        <div class="card-icon">🧴</div>
+        <h3>2. Espumado & Cepillado</h3>
+        <p>Shampoo especial para motocicleta y detallado a mano en rin, motor y zonas difíciles.</p>
+      </div>
+      <div class="card-service">
+        <div class="card-icon">✨</div>
+        <h3>3. Enjuague & Secado</h3>
+        <p>Enjuague a profundidad con agua limpia y secado con microfibra anti-rayones.</p>
+      </div>
+      <div class="card-service">
+        <div class="card-icon">🛡️</div>
+        <h3>4. Brillado de Llantas & Plásticos</h3>
+        <p>Aplicación de acondicionador y protector UV en plásticos y acabados finales.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA DE RESULTADOS (Tus 3 fotos principales) -->
+  <section id="galeria">
+    <h2 class="section-title scroll-focus">Resultados <span>Brilla Moto</span></h2>
+    <div class="grid-gallery">
+      <div class="gallery-item scroll-focus">
+        <img src="moto1.jpg" alt="Resultado Lavado Moto 1">
+      </div>
+      <div class="gallery-item scroll-focus">
+        <img src="moto2.jpg" alt="Resultado Lavado Moto 2">
+      </div>
+      <div class="gallery-item scroll-focus">
+        <img src="moto3.jpg" alt="Resultado Lavado Moto 3">
+      </div>
+    </div>
+
+    <!-- BOTONES -->
+    <div class="action-buttons-container">
+      <a href="https://wa.me/5212345678900?text=Hola,%20quiero%20agendar%20un%20lavado" target="_blank" class="btn-action btn-pink scroll-focus">Agendar Cita</a>
+      <a href="javascript:void(0)" class="btn-action btn-cyan scroll-focus">Blog</a>
+    </div>
+
+    <!-- BANNER GARANTÍA POR LLUVIA UMBRELLA -->
+    <div class="rain-banner scroll-focus">
+      <p>
+        Sabemos que el clima no avisa. Todos nuestros lavados cuentan con 
+        <a href="#" class="rain-link">☔ Garantía por lluvia</a>. 
+        Si la lluvia ensucia tu moto tras salir de nuestro taller, te la dejamos limpia de nuevo sin costo.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN COLLAGE ZIG-ZAG (EXPERIENCIA BRILLA) con nombres asignados -->
+  <section id="detalles-extra">
+    <h2 class="section-title scroll-focus">Experiencia <span>Brilla</span></h2>
+    
+    <div class="collage-section">
+      <div class="collage-row scroll-focus">
+        <div class="collage-image">
+          <img src="detalle-motor.jpg" alt="Detalle Motor">
+        </div>
+        <div class="collage-content">
+          <h3>Limpieza Técnica del Motor</h3>
+          <p>Removemos grasa acumulada y suciedad incrustada con fórmulas desengrasantes biodegradables que no corroen plásticos ni mangueras.</p>
+        </div>
+      </div>
+
+      <div class="collage-row reverse scroll-focus">
+        <div class="collage-image">
+          <img src="proteccion-uv.jpg" alt="Protección UV">
+        </div>
+        <div class="collage-content">
+          <h3>Protección UV & Acabado Mate/Brillo</h3>
+          <p>Aplicamos capas protectoras contra los rayos solares para evitar que tus plásticos se opaquen o resequen con el tiempo.</p>
+        </div>
+      </div>
+
+      <div class="collage-row scroll-focus">
+        <div class="collage-image">
+          <img src="secado-microfibra.jpg" alt="Secado Cuidadoso">
+        </div>
+        <div class="collage-content">
+          <h3>Secado de Alta Precisión</h3>
+          <p>Nos aseguramos de que no queden gotas atrapadas en rincones sensibles del sistema eléctrico ni marcas de agua en la pintura.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="scroll-focus">
+    <p>© 2026 BRILLA MOTO - Todos los derechos reservados | brillamoto.com.mx</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const focusItems = document.querySelectorAll(".scroll-focus");
+
+      function updateScrollFocus() {
+        const viewportCenter = window.innerHeight / 2;
+        const maxDistance = window.innerHeight * 0.5;
+
+        focusItems.forEach((item) => {
+          const rect = item.getBoundingClientRect();
+          const itemCenter = rect.top + (rect.height / 2);
+          
+          const distanceFromCenter = Math.abs(viewportCenter - itemCenter);
+
+          let progress = 1 - (distanceFromCenter / maxDistance);
+          progress = Math.max(0, Math.min(1, progress)); 
+
+          const scale = 0.85 + (progress * 0.15);
+
+          item.style.transform = `scale(${scale})`;
+        });
+      }
+
+      window.addEventListener("scroll", updateScrollFocus, { passive: true });
+      updateScrollFocus();
+    });
+  </script>
+
+</body>
+</html>
