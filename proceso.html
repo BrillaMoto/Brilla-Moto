@@ -91,7 +91,7 @@
 
     /* CLASE SCROLL FOCUS - ESCALADO CÓMODO Y ACCESIBLE */
     .scroll-focus {
-      opacity: 1 !important; /* Cero desvanecido para facilitar la lectura */
+      opacity: 1 !important;
       will-change: transform;
       transform-origin: center center;
       transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
@@ -302,7 +302,7 @@
       box-shadow: 0 0 25px rgba(0, 242, 254, 0.8);
     }
 
-    /* SECCIÓN COLLAGE ZIG-ZAG */
+    /* SECCIÓN COLLAGE ZIG-ZAG CON PASARELAS */
     .collage-section {
       display: flex;
       flex-direction: column;
@@ -333,6 +333,7 @@
       aspect-ratio: 16/10;
       border: 2px solid var(--neon-cyan);
       box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+      position: relative;
     }
 
     .collage-row.reverse .collage-image {
@@ -340,10 +341,20 @@
       box-shadow: 0 0 15px rgba(255, 0, 127, 0.2);
     }
 
+    /* Estilos para las imágenes del carrusel (pasarela) */
     .collage-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
+
+    .collage-image img.active {
+      opacity: 1;
     }
 
     .collage-content {
@@ -468,14 +479,18 @@
     </div>
   </section>
 
-  <!-- SECCIÓN COLLAGE ZIG-ZAG -->
+  <!-- SECCIÓN COLLAGE ZIG-ZAG CON PASARELAS DE IMÁGENES -->
   <section id="detalles-extra">
     <h2 class="section-title scroll-focus">Experiencia <span>Brilla</span></h2>
     
     <div class="collage-section">
+      <!-- PASARELA 1: Limpieza General -->
       <div class="collage-row scroll-focus">
-        <div class="collage-image">
-          <img src="detalle-motor.jpg" alt="Limpieza general">
+        <div class="collage-image" id="slider-limpieza">
+          <img src="Limpieza01.jpg" alt="Limpieza General 1" class="active">
+          <img src="Limpieza02.jpg" alt="Limpieza General 2">
+          <img src="Limpieza03.jpg" alt="Limpieza General 3">
+          <img src="Limpieza04.jpg" alt="Limpieza General 4">
         </div>
         <div class="collage-content">
           <h3>Limpieza General</h3>
@@ -483,10 +498,12 @@
         </div>
       </div>
 
-      <!-- SECCIÓN RINES Y LLANTAS -->
+      <!-- PASARELA 2: Rines y Llantas -->
       <div class="collage-row reverse scroll-focus">
-        <div class="collage-image">
-          <img src="proteccion-uv.jpg" alt="Rines y Llantas">
+        <div class="collage-image" id="slider-rines">
+          <img src="Rin.jpg" alt="Rin" class="active">
+          <img src="llanta1.jpg" alt="Llanta 1">
+          <img src="llanta2.jpg" alt="Llanta 2">
         </div>
         <div class="collage-content">
           <h3>Rines y Llantas</h3>
@@ -494,9 +511,11 @@
         </div>
       </div>
 
+      <!-- PASARELA 3: Secado con Microfibra -->
       <div class="collage-row scroll-focus">
-        <div class="collage-image">
-          <img src="secado-microfibra.jpg" alt="Secado Cuidadoso">
+        <div class="collage-image" id="slider-secado">
+          <img src="Encerado1.jpg" alt="Encerado 1" class="active">
+          <img src="Encerado2.jpg" alt="Encerado 2">
         </div>
         <div class="collage-content">
           <h3>Secado con Microfibra</h3>
@@ -536,7 +555,26 @@
       window.addEventListener("scroll", updateScrollFocus, { passive: true });
       updateScrollFocus();
 
-      // Script mejorado para desplegar la garantía de forma completamente dinámica sin recortes
+      // Script para los carruseles (pasarelas) automáticos cada 3 segundos
+      function iniciarCarrusel(sliderId) {
+        const slider = document.getElementById(sliderId);
+        if (!slider) return;
+        const imagenes = slider.querySelectorAll("img");
+        let indiceActual = 0;
+
+        setInterval(() => {
+          imagenes[indiceActual].classList.remove("active");
+          indiceActual = (indiceActual + 1) % imagenes.length;
+          imagenes[indiceActual].classList.add("active");
+        }, 3000); // 3000 milisegundos = 3 segundos
+      }
+
+      // Inicializar las 3 pasarelas
+      iniciarCarrusel("slider-limpieza");
+      iniciarCarrusel("slider-rines");
+      iniciarCarrusel("slider-secado");
+
+      // Script para desplegar la garantía de forma dinámica
       const rainToggleBtn = document.getElementById("rainToggleBtn");
       const rainDropdown = document.getElementById("rainDropdown");
 
