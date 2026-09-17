@@ -11,6 +11,7 @@
     :root {
       --neon-cyan: #00f2fe;
       --neon-pink: #ff007f;
+      --lime-green: #39ff14;
       --bg-dark: #0d0c0e;
       --card-bg: #16151a;
     }
@@ -396,6 +397,42 @@
       line-height: 1.7;
     }
 
+    /* NUEVA COLUMNA CHIQUITA DE PROMOCIÓN */
+    .promo-column {
+      max-width: 450px;
+      margin: 50px auto 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--lime-green);
+      border-radius: 16px;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+    }
+
+    .promo-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .promo-price {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--lime-green);
+      text-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
+      margin-bottom: 10px;
+    }
+
+    .promo-desc {
+      font-size: 1.05rem;
+      color: #ccc;
+      margin-bottom: 25px;
+    }
+
     @media (max-width: 768px) {
       .collage-row, .collage-row.reverse {
         flex-direction: column !important;
@@ -518,7 +555,7 @@
         </div>
       </div>
 
-      <!-- PASARELA 2: Rines y Llantas (Usando exactamente tus archivos de llantas) -->
+      <!-- PASARELA 2: Rines y Llantas -->
       <div class="collage-row reverse scroll-focus">
         <div class="collage-image" id="slider-rines">
           <img src="Rin.jpg" alt="Rin" class="active">
@@ -543,6 +580,15 @@
         </div>
       </div>
     </div>
+
+    <!-- COLUMNA CHIQUITA DE PROMOCIÓN AÑADIDA AQUÍ -->
+    <div class="promo-column scroll-focus">
+      <h3 class="promo-title">Aprovecha hoy ya.</h3>
+      <div class="promo-price">$40</div>
+      <p class="promo-desc">Lavado más encerado a precio de introducción</p>
+      <a href="https://wa.me/522261009376?text=Hola,%20quiero%20agendar%20mi%20lavado%20con%20precio%20de%20introduccion" target="_blank" class="btn-action btn-cyan">Agendar Cita</a>
+    </div>
+
   </section>
 
   <footer class="scroll-focus">
